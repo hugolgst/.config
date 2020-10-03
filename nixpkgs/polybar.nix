@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 # Created By @icanwalkonwater
-# Edited and ported to Nix by Th0rgal
+# Edited and ported to Nix by @Th0rgal
 
 let
   ac = "#1E88E5";
@@ -68,7 +68,7 @@ in
 
           modules-left = "distro-icon dulP ddrT i3 dulT";
           modules-center = "title";
-          modules-right = "durT audio ddlT date";
+          modules-right = "durT audio ddlT durP wireless-network ddlP date";
 
           locale = "en_US.UTF-8";
         };
@@ -100,7 +100,7 @@ in
           font-0 = "FuraCode Nerd Font:size=12;3";
           font-1 = "FuraCode Nerd Font:style=Bold:size=12;3";
           
-          modules-left = "powermenu ddlS";
+          modules-left = "powermenu durT temperature ddlT";
 
           modules-right = "ddrS cpu dulS ddrT memory dulT ddrP battery";
           
@@ -127,7 +127,7 @@ in
 
         "module/distro-icon" = {
           type = "custom/script";
-          exec = "${pkgs.coreutils}/bin/uname -r | ${pkgs.coreutils}/bin/cut -d- -f1";
+          exec = "/run/current-system/sw/bin/nixos-version | /run/current-system/sw/bin/grep -o '[0-9]\\+\\.[0-9]\\+' | /run/current-system/sw/bin/head -1";
           interval = 999999999;
 
           format = " <label>";
@@ -218,7 +218,7 @@ in
           time-alt = "%Y-%m-%d%";
           
           format = "<label>";
-          format-padding = 4;
+          format-padding = 2;
           format-foreground = fg;
           
           label = "%time%";
@@ -231,25 +231,25 @@ in
           format = "<label-state> <label-mode>";
           format-background = tertiary;
 
-          ws-icon-0 = "1;";
-          ws-icon-1 = "2;";
-          ws-icon-2 = "3;﬏";
-          ws-icon-3 = "4;";
-          ws-icon-4 = "5;";
-          ws-icon-5 = "6;";
-          ws-icon-6 = "7;";
-          ws-icon-7 = "8;";
-          ws-icon-8 = "9;";
-          ws-icon-9 = "10;";
+          ws-icon-0 = "1";
+          ws-icon-1 = "2";
+          ws-icon-2 = "3";
+          ws-icon-3 = "4";
+          ws-icon-4 = "5";
+          ws-icon-5 = "6";
+          ws-icon-6 = "7";
+          ws-icon-7 = "8";
+          ws-icon-8 = "9";
+          ws-icon-9 = "10";
 
           label-mode = "%mode%";
           label-mode-padding = 1;
 
-          label-unfocused = "%icon%";
+          label-unfocused = "%index%";
           label-unfocused-foreground = quinternary;
           label-unfocused-padding = 1;
 
-          label-focused = "%index% %icon%";
+          label-focused = "%index%";
           label-focused-font = 2;
           label-focused-foreground = secondary;
           label-focused-padding = 1;
@@ -314,29 +314,18 @@ in
         "module/temperature" = {
           type = "internal/temperature";
           
-          interval = "0.5";
-          
           thermal-zone = 0; # TODO: Find a better way to fill that
           warn-temperature = 60;
           units = true;
           
           format = "<label>";
-          format-background = mf;
-          format-underline = bg;
-          format-overline = bg;
-          format-padding = 2;
-          format-margin = 0;
+          interval = 3;
           
-          format-warn = "<label-warn>";
-          format-warn-background = mf;
-          format-warn-underline = bg;
-          format-warn-overline = bg;
-          format-warn-padding = 2;
-          format-warn-margin = 0;
+          format-background = tertiary;
+          format-foreground = secondary;
+          format-padding = 1;
           
-          label = "TEMP %temperature-c%";
-          label-warn = "TEMP %temperature-c%";
-          label-warn-foreground = "#f00"; 
+          label = " TEMP %temperature-c%";
         };
 
         "module/powermenu" = {
@@ -348,21 +337,31 @@ in
           format-padding = 1;
 
           label-open = "";
-          label-close = "";
+          label-close = "  ";
           label-separator = "  ";
 
-          menu-0-0 = " Suspend";
-          menu-0-0-exec = "systemctl suspend";
+          menu-0-0 = " Lock";
+          menu-0-0-exec = "dm-tool lock";
           menu-0-1 = " Reboot";
-          menu-0-1-exec = "v";
+          menu-0-1-exec = "reboot";
           menu-0-2 = " Shutdown";
           menu-0-2-exec = "systemctl poweroff";
         };
 
-        #"module/wireless-network" = {
-        #  type = "internal/network";
-        #  interval = "wlp2s0";
-        #};
+        "module/wireless-network" = {
+          type = "internal/network";
+          interface = "wlp1s0";
+
+          label-connected = " 直 %essid% %downspeed% ";
+          label-connected-background = primary;
+          label-connected-foreground = secondary;
+          label-disconnected = " 睊 NOT CONNECTED ";
+          label-disconnected-background = primary;
+          label-disconnected-foreground = secondary;
+
+          format-connected = "<label-connected>";
+          format-disconnected = "<label-disconnected>";
+        };
 
   #--------------------SOLID TRANSITIONS--------------------#
 

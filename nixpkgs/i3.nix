@@ -24,8 +24,7 @@
                 "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
                 "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -modi drun -show drun";
                 "${modifier}+Shift+d" = "exec ${pkgs.rofi}/bin/rofi -show window";
-                "${modifier}+b" = "exec ${pkgs.brave}/bin/brave";
-                "${modifier}+Shift+x" = "exec systemctl suspend";
+                "${modifier}+Shift+x" = "exec dm-tool lock";
             };
 
             startup = [
@@ -36,7 +35,7 @@
                 }
 
                 {
-                    command = "polybar DP-2";
+                    command = "systemctl --user restart polybar.service";
                     always = true;
                     notification = false;
                 }
