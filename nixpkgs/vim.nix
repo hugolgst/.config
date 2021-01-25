@@ -3,7 +3,7 @@
 {
   programs.vim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [ vim-airline nerdtree gruvbox ];
+    plugins = with pkgs.vimPlugins; [ vim-airline nerdtree gruvbox vim-go coc-go coc-nvim ];
     extraConfig = ''
       set clipboard=unnamedplus
 
@@ -39,6 +39,9 @@
       au VimEnter *  NERDTree
       nnoremap <F3> :NERDTreeToggle<CR>
       nnoremap <F2> :12split term://zsh<CR>
+
+      au filetype go inoremap <buffer> . .<C-x><C-o>
+      let g:go_fmt_command = "goimports"
 
       " Set tab sizes
       set noexpandtab

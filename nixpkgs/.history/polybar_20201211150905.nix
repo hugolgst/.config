@@ -37,7 +37,7 @@ in
         alsaSupport = true;
       };
 
-      script = "polybar -q -r top & polybar -q -r bottom & polybar -q -r top-dp & polybar -q -r bottom-dp &";
+      script = "polybar -q -r top & polybar -q -r bottom &";
     
       config = {
         "global/wm" = {
@@ -47,14 +47,9 @@ in
 
   #====================BARS====================#
 
-        "bar/top-dp" = {
+        "bar/top-edp1" = {
           "inherit" = "bar/top";
-          monitor = "DP-2";
-        };
-
-        "bar/bottom-dp" = {
-          "inherit" = "bar/bottom";
-          monitor = "DP-2";
+          monitor = "eDP-1";
         };
 
         "bar/top" = {
@@ -110,7 +105,7 @@ in
           font-0 = "FuraCode Nerd Font:size=12;3";
           font-1 = "FuraCode Nerd Font:style=Bold:size=12;3";
           
-          modules-left = "powermenu ddlS durT temperature ddlT";
+          modules-left = "powermenu durT temperature ddlT";
 
           modules-right = "ddrS cpu dulS ddrT memory dulT ddrP battery";
           

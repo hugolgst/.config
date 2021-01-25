@@ -37,7 +37,7 @@ in
         alsaSupport = true;
       };
 
-      script = "polybar -q -r top & polybar -q -r bottom & polybar -q -r top-dp & polybar -q -r bottom-dp &";
+      script = "polybar -q -r top & polybar -q -r bottom &";
     
       config = {
         "global/wm" = {

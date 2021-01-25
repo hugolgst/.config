@@ -48,7 +48,7 @@
                 }
                 
                 {
-                    command = "feh --bg-scale ~/.background.jpg";
+                    command = "feh --bg-scale ~/.background.jpeg";
                     always = true;
                     notification = false;
                 }
