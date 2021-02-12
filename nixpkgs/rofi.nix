@@ -20,7 +20,7 @@
       }
       
       * {
-        background-color:            transparent;
+        background-color:            black;
         text-color:                  #b2aea8;
         selbg:                       #3949A3;
         actbg:                       #262626;

@@ -2,12 +2,13 @@
 
 {
   imports =
-    [ ./vscode.nix ./alacritty.nix ./vim.nix ./sway.nix ./redshift.nix ];
+    [ ./vscode.nix ./alacritty.nix ./vim.nix ./sway.nix ./redshift.nix ./rofi.nix ];
 
   home.packages = with pkgs; [
     neofetch
     nixfmt
     google-chrome
+    wdisplays
 
     # Fonts
     jetbrains-mono

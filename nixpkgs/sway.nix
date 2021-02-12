@@ -1,5 +1,13 @@
 { pkgs, lib, ... }: {
-  home.packages = with pkgs; [ wofi ];
+  home.packages = with pkgs; [
+    wofi
+    swaylock-effects
+    swayidle
+    swaybg
+    grim
+    slurp
+    wl-clipboard
+  ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -20,8 +28,22 @@
         "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
         "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -modi drun -show drun";
         "${modifier}+Shift+d" = "exec ${pkgs.rofi}/bin/rofi -show window";
-        "${modifier}+Shift+x" = "exec dm-tool lock";
-        "${modifier}+Shift+s" = "exec escrotum -s -C";
+        "${modifier}+Shift+x" = ''
+          exec swaylock \
+                        --screenshots \
+                        --effect-blur 5x7 \
+                        --effect-vignette 0.5:0.5 \
+                        --ring-color 242424 \
+                        --key-hl-color 696969 \
+                        --fade-in 0.2 \
+                        --line-color 00000000 \
+                        --inside-color 00000088 \
+                        --separator-color 00000000 \
+                        --clock \
+                        --indicator'';
+        "${modifier}+Shift+s" = ''
+          exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.wl-clipboard}/bin/wl-copy'';
+        "${modifier}+m" = "exec wdisplays";
       };
 
       # Set default terminal to alacritty
@@ -29,8 +51,8 @@
 
       # Set up the gaps
       gaps = {
-        inner = 5;
-        outer = 15;
+        inner = 10;
+        outer = 10;
       };
 
       # Start waybar
@@ -43,6 +65,8 @@
           xkb_variant = "intl";
         };
       };
+
+      startup = [{ command = "swaybg -i /home/hl/.nixos.png -m fill"; }];
     };
   };
 
