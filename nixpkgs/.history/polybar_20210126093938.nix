@@ -41,7 +41,7 @@ in
 
       script = "polybar -q -r top & polybar -q -r bottom & polybar -q -r top-dp & polybar -q -r bottom-dp &";
     
-      config = {
+      config = {3
         "global/wm" = {
           margin-bottom = 0;
           margin-top = 0;

@@ -19,7 +19,7 @@ let
   secondary = "#000000";
 
   # Colored (light)
-  tertiary = "#ffffff";
+  tertiary = "#74c2d4";
 
   # white
   quaternary = "#ecf0f1";

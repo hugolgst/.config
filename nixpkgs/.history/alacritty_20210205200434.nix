@@ -5,19 +5,17 @@
     enable = true;
 
     settings = {
-      cursor = { style = "Beam"; };
-
       window = {
         title = "Terminal";
         dimensions = {
-          lines = 50;
-          columns = 175;
+          lines = 75;
+          columns = 100;
         };
       };
 
       font = {
         normal.family = "Jetbrains Mono";
-        size = 9;
+        size = 6;
       };
 
       # background_opacity = 0.95;
@@ -28,24 +26,24 @@
           foreground = "0xebdbb2";
         };
         normal = {
-          black = "0x282828";
-          red = "0xcc241d";
-          green = "0x98971a";
-          yellow = "0xd79921";
-          blue = "0x458588";
+          black   = "0x282828";
+          red     = "0xcc241d";
+          green   = "0x98971a";
+          yellow  = "0xd79921";
+          blue    = "0x458588";
           magenta = "0xb16286";
-          cyan = "0x689d6a";
-          white = "0xa89984";
+          cyan    = "0x689d6a";
+          white   = "0xgray";
         };
         bright = {
-          black = "0x928374";
-          red = "0xfb4934";
-          green = "0xb8bb26";
-          yellow = "0xfabd2f";
-          blue = "0x83a598";
+          black   = "0x928374";
+          red     = "0xfb4934";
+          green   = "0xb8bb26";
+          yellow  = "0xfabd2f";
+          blue    = "0x83a598";
           magenta = "0xd3869b";
-          cyan = "0x8ec07c";
-          white = "0xebdbb2";
+          cyan    = "0x8ec07c";
+          white   = "0xebdbb2";
         };
       };
     };

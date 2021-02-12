@@ -3,7 +3,15 @@
 {
   programs.vim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [ vim-airline nerdtree gruvbox vim-go coc-go coc-nvim ];
+    plugins = with pkgs.vimPlugins; [
+      vim-airline
+      nerdtree
+      gruvbox
+      vim-go
+      coc-go
+      coc-nvim
+      vim-gitgutter
+    ];
     extraConfig = ''
       set clipboard=unnamedplus
 
@@ -22,6 +30,12 @@
       set splitbelow
       set splitright
 
+      set autoindent
+      set autoread
+
+      nnoremap d "_d
+      vnoremap d "_d
+
       " Set the colorscheme
       colorscheme gruvbox
       set bg=dark
@@ -38,7 +52,11 @@
       " Set NERDTreeToggle to F3 and auto toogle NERDTree
       au VimEnter *  NERDTree
       nnoremap <F3> :NERDTreeToggle<CR>
-      nnoremap <F2> :12split term://zsh<CR>
+      let g:NERDTreeWinPos = "right"
+      nnoremap <F2> :12split term://fish<CR>
+
+      " Nix formatter
+      autocmd BufWritePost *.nix :silent! !nixfmt <afile>
 
       au filetype go inoremap <buffer> . .<C-x><C-o>
       let g:go_fmt_command = "goimports"
@@ -54,7 +72,6 @@
       inoremap { {}<Esc>i
       inoremap {<CR> {<CR>}<Esc>O
       inoremap [ []<Esc>i
-      inoremap < <><Esc>i
       inoremap \' \'\'<Esc>i
       inoremap " ""<Esc>i
     '';

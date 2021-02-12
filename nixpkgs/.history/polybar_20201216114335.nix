@@ -11,15 +11,13 @@ let
   fg = "#FFFFFF";
 
   # Colored
-  # primary = "#ffb973";
-  primary = "#b6ffff";
+  primary = "#ffb973";
 
   # Dark
-  # secondary = "#140e0a";
-  secondary = "#000000";
+  secondary = "#140e0a";
 
   # Colored (light)
-  tertiary = "#ffffff";
+  tertiary = "#74c2d4";
 
   # white
   quaternary = "#ecf0f1";

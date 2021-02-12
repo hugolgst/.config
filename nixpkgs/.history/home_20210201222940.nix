@@ -1,22 +1,26 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [ ./vscode.nix ./alacritty.nix ./vim.nix ./sway.nix ./redshift.nix ];
+  imports = [
+    ./vscode.nix
+    ./i3.nix
+    ./alacritty.nix
+    ./vim.nix
+    ./rofi.nix
+    ./polybar.nix
+    ./compton.nix
+  ];
 
   home.packages = with pkgs; [
-    neofetch
-    nixfmt
-    google-chrome
-
-    # Fonts
-    jetbrains-mono
-    roboto
+    feh neofetch google-chrome
+    (polybar.override { i3GapsSupport = true; })
+    brightnessctl
+    jetbrains-mono roboto
   ];
 
   nixpkgs.config.allowUnfree = true;
+  xsession.enable = true;
 
-  # Fish colors
   # set -U fish_color_autosuggestion      brblack
   # set -U fish_color_cancel              -r
   # set -U fish_color_command             brgreen
@@ -43,8 +47,32 @@
   # set -U fish_pager_color_description   yellow
   # set -U fish_pager_color_prefix        'white' '--bold' '--underline'
   # set -U fish_pager_color_progress      'brwhite' '--background=cyan'
-  programs.fish = { enable = true; };
+  programs.fish = {
+    enable = true;
+  };
 
-  # Enable golang
-  programs.go.enable = true;
+  services.redshift = {
+    latitude = "46.51723660398567";
+    longitude = "6.632170519072659";
+    enable = true;
+    brightness = {
+      # Note the string values below.
+      day = "1";
+      night = "1";
+    };
+    temperature = {
+      day = 5500;
+      night = 3700;
+    };
+  };
+
+  services.acpid = {
+    enable = true;
+    handlers = {
+      mute = {
+        event = "button/mute.*";
+        action = "amixer set Master toggle";
+      };
+    };
+  };
 }

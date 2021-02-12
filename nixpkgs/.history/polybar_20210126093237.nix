@@ -16,10 +16,10 @@ let
 
   # Dark
   # secondary = "#140e0a";
-  secondary = "#000000";
+  secondary = "#ffffff";
 
   # Colored (light)
-  tertiary = "#ffffff";
+  tertiary = "#74c2d4";
 
   # white
   quaternary = "#ecf0f1";

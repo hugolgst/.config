@@ -48,7 +48,7 @@
                 }
                 
                 {
-                    command = "feh --bg-scale ~/.nixos.png";
+                    command = "feh --bg-scale ~/.background.jpg";
                     always = true;
                     notification = false;
                 }
