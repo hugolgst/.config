@@ -1,5 +1,6 @@
-{ pkgs, lib, ... }: {
-  home.packages = with pkgs; [
+{ pkgs, config, lib, options, ... }: {
+  home.packages = let unstable = import <nixos-unstable> { };
+  in with pkgs; [
     wofi
     swaylock-effects
     swayidle
@@ -8,6 +9,7 @@
     slurp
     wl-clipboard
     wdisplays
+    unstable.wlsunset
   ];
 
   wayland.windowManager.sway = {

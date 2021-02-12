@@ -8,6 +8,7 @@
     neofetch
     nixfmt
     google-chrome
+    tmux
 
     # Fonts
     jetbrains-mono
