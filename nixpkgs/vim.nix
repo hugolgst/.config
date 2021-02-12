@@ -3,6 +3,7 @@
 {
   programs.vim = {
     enable = true;
+
     plugins = with pkgs.vimPlugins; [
       vim-airline
       nerdtree
@@ -12,6 +13,7 @@
       coc-nvim
       vim-gitgutter
     ];
+
     extraConfig = ''
       set clipboard=unnamedplus
 

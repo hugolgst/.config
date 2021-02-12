@@ -8,7 +8,6 @@
     neofetch
     nixfmt
     google-chrome
-    wdisplays
 
     # Fonts
     jetbrains-mono

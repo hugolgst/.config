@@ -7,6 +7,7 @@
     grim
     slurp
     wl-clipboard
+    wdisplays
   ];
 
   wayland.windowManager.sway = {
